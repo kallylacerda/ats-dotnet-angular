@@ -28,21 +28,7 @@ export class CreateEditCandidatoComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.form = this.formBuilder.group({
-      nomeCompleto: ['', Validators.required],
-      email: ['', Validators.required],
-      cpf: ['', Validators.required],
-      dataNascimento: ['', Validators.required],
-      telefone: [''],
-      descricao: [''],
-      endereco: this.formBuilder.group({
-        estadoId: [''],
-        municipioId: ['', Validators.required],
-        cep: ['', Validators.required],
-        logradouro: ['', Validators.required],
-        numero: [''],
-      }),
-    });
+    this.form = this.initForm();
   }
 
   ngOnInit() {
@@ -130,5 +116,23 @@ export class CreateEditCandidatoComponent implements OnInit, OnDestroy {
         })
       );
     }
+  }
+
+  private initForm(): FormGroup {
+    return this.formBuilder.group({
+      nomeCompleto: ['', Validators.required],
+      email: ['', Validators.required],
+      cpf: ['', Validators.required],
+      dataNascimento: ['', Validators.required],
+      telefone: [''],
+      descricao: [''],
+      endereco: this.formBuilder.group({
+        estadoId: [''],
+        municipioId: ['', Validators.required],
+        cep: ['', Validators.required],
+        logradouro: ['', Validators.required],
+        numero: [''],
+      }),
+    });
   }
 }
