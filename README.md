@@ -14,15 +14,6 @@ Clonar o projeto
 
 <br>
 
-### Frontend
-Via linha de comando, entrar na pasta "Frontend", executar o comando para instalar as dependências do projeto:\
-_npm i_
-
-Após instalar as dependências, executar o start:\
-_ng s_
-
-<br>
-
 ### Backend
 Via linha de comando, entrar na pasta "API", executar o comando para restaurar/instalar as dependências do projeto:\
 _dotnet restore_
@@ -32,6 +23,15 @@ _dotnet build_
 
 Executar o comando para executar o projeto:\
 _dotnet run --project API.Application_
+
+<br>
+
+### Frontend
+Via linha de comando, entrar na pasta "Frontend", executar o comando para instalar as dependências do projeto:\
+_npm i_
+
+Após instalar as dependências, executar o start:\
+_ng s_
 
 <br>
 
