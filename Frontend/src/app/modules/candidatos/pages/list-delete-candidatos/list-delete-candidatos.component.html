@@ -1,0 +1,39 @@
+<po-page-list>
+  <div class="text-end mb-3">
+    <po-button
+      p-icon="po-icon po-icon-plus"
+      p-label="Adicionar"
+      (p-click)="navigateToAdd()"
+    ></po-button>
+  </div>
+  <po-table [p-columns]="columns" [p-items]="items">
+    <ng-template p-table-cell-template let-column="column" let-row="row">
+      <span *ngIf="column.property === 'dataNascimento'">
+        {{ row.dataNascimento | date: "dd/MM/yyyy" }}
+      </span>
+      <span *ngIf="column.property === 'createdAt'">
+        {{ row.createdAt | date: "dd/MM/yyyy HH:mm" }}
+      </span>
+      <span *ngIf="column.property === 'acoes'">
+        <po-button
+          class="ms-3"
+          p-icon="po-icon po-icon-edit"
+          (p-click)="navigateToEdit(row.id)"
+        ></po-button>
+        <po-button
+          class="ms-3"
+          p-icon="po-icon po-icon-delete"
+          (p-click)="openDeleteConfirmation(row.id)"
+        ></po-button>
+      </span>
+    </ng-template>
+  </po-table>
+</po-page-list>
+
+<po-modal
+  p-title="Deletar candidato"
+  [p-primary-action]="confirm"
+  [p-secondary-action]="close"
+>
+  Deseja deletar o candidato?
+</po-modal>

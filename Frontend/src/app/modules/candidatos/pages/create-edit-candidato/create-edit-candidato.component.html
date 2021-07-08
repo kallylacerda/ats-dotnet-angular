@@ -1,0 +1,117 @@
+<po-page-edit
+  [p-title]="pageAction + ' Candidato'"
+  [p-disable-submit]="form.invalid"
+  (p-cancel)="cancel()"
+  (p-save)="save()"
+>
+  <form [formGroup]="form">
+    <h3>Dados pessoais</h3>
+    <div class="po-row mt-4">
+      <po-input
+        class="po-lg-6 pe-5"
+        p-label="Nome Completo*"
+        [p-minlength]="10"
+        [p-maxlength]="100"
+        p-clean
+        p-required
+        formControlName="nomeCompleto"
+      ></po-input>
+      <po-email
+        class="po-lg-6 pe-5"
+        p-label="E-mail*"
+        [p-minlength]="4"
+        [p-maxlength]="100"
+        p-error-pattern="E-mail inválido"
+        p-clean
+        p-required
+        formControlName="email"
+      ></po-email>
+    </div>
+
+    <div class="po-row mt-4">
+      <po-input
+        class="po-lg-3 pe-5"
+        p-label="CPF*"
+        [p-minlength]="14"
+        [p-maxlength]="14"
+        p-mask="999.999.999-99"
+        p-placeholder="999.999.999-99"
+        p-clean
+        p-required
+        formControlName="cpf"
+      ></po-input>
+      <po-datepicker
+        class="po-lg-3 pe-5"
+        p-label="Data de Nascimento*"
+        p-clean
+        p-min-date="1900-01-01"
+        [p-max-date]="maxDate"
+        formControlName="dataNascimento"
+      ></po-datepicker>
+      <po-input
+        class="po-lg-3 pe-5"
+        p-label="Telefone (com DDD)"
+        p-placeholder="(DDD) 9999-9999"
+        p-mask="(99) 99999?-9999"
+        [p-minlength]="14"
+        [p-maxlength]="15"
+        p-clean
+        formControlName="telefone"
+      ></po-input>
+    </div>
+    <hr class="mt-4" />
+    <form formGroupName="endereco">
+      <h3>Endereço</h3>
+      <div class="po-row mt-4">
+        <po-select
+          class="po-lg-3 pe-5"
+          p-label="Estado*"
+          (p-change)="ufChange()"
+          [p-options]="ufsOptions"
+          formControlName="estadoId"
+        ></po-select>
+        <po-select
+          class="po-lg-3 pe-5"
+          p-label="Município*"
+          [p-options]="municipiosOptions"
+          formControlName="municipioId"
+        ></po-select>
+        <po-input
+          class="po-lg-2 pe-5"
+          p-label="CEP*"
+          p-placeholder="99999-999"
+          p-mask="99999-999"
+          p-clean
+          p-required
+          [p-minlength]="9"
+          [p-maxlength]="9"
+          formControlName="cep"
+        ></po-input>
+        <po-input
+          class="po-lg-3 pe-5"
+          p-label="Avenina/Rua*"
+          [p-minlength]="5"
+          [p-maxlength]="60"
+          p-clean
+          p-required
+          formControlName="logradouro"
+        ></po-input>
+        <po-input
+          class="po-lg-1 pe-4"
+          p-label="Número"
+          [p-maxlength]="5"
+          formControlName="numero"
+        ></po-input>
+      </div>
+    </form>
+    <hr class="mt-4" />
+    <h3>Descrição</h3>
+    <div class="po-row my-4">
+      <po-textarea
+        class="po-lg-12"
+        p-label="Descrição"
+        formControlName="descricao"
+      ></po-textarea>
+    </div>
+  </form>
+</po-page-edit>
