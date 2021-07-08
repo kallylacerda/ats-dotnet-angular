@@ -23,7 +23,6 @@ export class ApiService {
   public get(path: string): Observable<any> {
     return this.httpClient.get(BASE_URL + path).pipe(
       retry(1),
-
       catchError((e: any) => throwError(e))
     );
   }
